@@ -418,17 +418,17 @@ export default function Home() {
               <div className="form-row">
                 <div className="field">
                   <label>Your Name *</label>
-                  <input type="text" required placeholder="John Smith" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} />
+                  <input type="text" placeholder="John Smith" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} />
                 </div>
                 <div className="field">
                   <label>Business Name *</label>
-                  <input type="text" required placeholder="Smith Barbershop" value={formData.business} onChange={e => setFormData(p => ({ ...p, business: e.target.value }))} />
+                  <input type="text" placeholder="Smith Barbershop" value={formData.business} onChange={e => setFormData(p => ({ ...p, business: e.target.value }))} />
                 </div>
               </div>
               <div className="form-row">
                 <div className="field">
                   <label>Email *</label>
-                  <input type="email" required placeholder="john@yourbusiness.com" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} />
+                  <input type="email" placeholder="john@yourbusiness.com" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} />
                 </div>
                 <div className="field">
                   <label>Phone</label>
