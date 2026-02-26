@@ -19,16 +19,16 @@ export async function POST(req: NextRequest) {
   const smsText = `Mainstay lead: ${name}, ${business}. ${email} ${phone || ''} - ${message || 'no message'}`
 
   try {
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: '2036714631@vtext.com',
       subject: 'New Lead',
       text: smsText,
     })
-
-    return NextResponse.json({ success: true })
-  } catch (err) {
+    console.log('Resend result:', result)
+    return NextResponse.json({ success: true, result })
+  } catch (err: any) {
     console.error('SMS error:', err)
-    return NextResponse.json({ error: 'Failed to send' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to send', details: err?.message || String(err) }, { status: 500 })
   }
 }
