@@ -15,15 +15,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
-  // Sends to Verizon email-to-SMS gateway — arrives as a text on Caden's phone
-  const smsText = `Mainstay lead: ${name}, ${business}. ${email} ${phone || ''} - ${message || 'no message'}`
+  // Sends to Caden's Gmail (Resend free tier requires verified recipient)
+  const emailText = `Mainstay lead: ${name}, ${business}. ${email} ${phone || ''} - ${message || 'no message'}`
 
   try {
     const result = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: '2036714631@vtext.com',
-      subject: 'New Lead',
-      text: smsText,
+      to: 'cadenhillier33@gmail.com',
+      subject: 'New Lead - Mainstay AI',
+      text: emailText,
     })
     console.log('Resend result:', result)
     return NextResponse.json({ success: true, result })
